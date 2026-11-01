@@ -1,4 +1,4 @@
-# Transmission-et-r-ception-de-vid-o-en-BPSK-avec-GNU-Radio-et-USRP-B210
+# Transmission et reception de video en BPSK avec GNU Radio et USRP B210
 Chaîne de communication numérique complète (émission **et** réception) pour transférer un fichier vidéo MP4 par voie radio, réalisée avec **GNU Radio Companion** et une radio logicielle **USRP B210**
 
 
@@ -88,8 +88,8 @@ flowchart LR
 
 1. Clone le dépôt :
    ```bash
-   git clone https://github.com/Yameogo2004/bpsk-video-gnuradio-sdr.git
-   cd bpsk-video-gnuradio-sdr
+   git clone https://github.com/Yameogo2004/Transmission_et_reception_de_video_en_BPSK.git
+   cd Transmission_et_reception_de_video_en_BPSK
    ```
 2. Place ta vidéo de test dans `input/` et nomme-la `test_video.mp4` (ou modifie le chemin dans le bloc **File Source**).
 3. Ouvre `flowgraph/bpsk_video_transmitter.grc` dans GNU Radio Companion.
@@ -103,10 +103,8 @@ flowchart LR
 ## Résultats
 
 <!-- À compléter avec tes propres mesures, par exemple : -->
-<!-- - Vidéo testée : durée, taille -->
-<!-- - Distance entre l'émetteur et le récepteur -->
-<!-- - Gains TX / RX utilisés -->
-<!-- - Taux de paquets rejetés par le CRC -->
+<!-- - Vidéo testée : 3s, 933ko -->
+<!-- - Usage d'un seul sdr avec un angle de 120 degres entre les antennes-->
 <!-- - Temps de transmission -->
 <!-- - Captures : constellation (Recovered Symbols), spectre, vidéo reçue -->
 
@@ -114,10 +112,10 @@ La vidéo est reçue et lisible avec ce flowgraph.
 
 ## Limites et pistes d'amélioration
 
-- **Débit utile faible** : avec 4000 octets de préambule et de postambule pour environ 1030 octets de données, l'efficacité des trames est d'environ 20 %, soit un débit utile théorique d'environ 50 kbit/s sur 250 kbit/s bruts. Raccourcir le préambule et supprimer le postambule augmenterait nettement le débit.
 - **Pas de retransmission** : un paquet dont le CRC est faux est simplement rejeté, donc le fichier reçu peut contenir des trous. Un mécanisme ARQ (accusé de réception, retransmission) ou un codage correcteur d'erreurs (FEC) améliorerait la fiabilité.
 - **Modulation simple** : le BPSK est robuste mais peu efficace spectralement. QPSK ou 16-QAM permettraient de monter en débit si le rapport signal sur bruit le permet.
 - **Lecture d'un fichier complet** : pas de streaming en temps réel, la vidéo est transmise puis lue après réception.
+- **Fermeture forcee de gnu radio** : 
 
 ## Réglementation
 
