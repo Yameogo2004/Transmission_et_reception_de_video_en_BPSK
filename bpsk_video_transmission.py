@@ -6,7 +6,6 @@
 #
 # GNU Radio Python Flow Graph
 # Title: bpsk_video_transmission
-# Author: Arshala khan
 # GNU Radio version: 3.10.12.0
 
 from PyQt5 import Qt
