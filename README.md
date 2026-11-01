@@ -102,13 +102,10 @@ flowchart LR
 
 ## Résultats
 
-<!-- À compléter avec tes propres mesures, par exemple : -->
-<!-- - Vidéo testée : 3s, 933ko -->
-<!-- - Usage d'un seul sdr avec un angle de 120 degres entre les antennes-->
-<!-- - Temps de transmission -->
-<!-- - Captures : constellation (Recovered Symbols), spectre, vidéo reçue -->
+Vidéo testée : 3s, 933ko
+Usage d'un seul sdr avec un angle de 120 degres entre les antennes
 
-La vidéo est reçue et lisible avec ce flowgraph.
+La vidéo est reçue et lisible avec le flowgraph.
 
 ## Limites et pistes d'amélioration
 
@@ -123,10 +120,30 @@ La fréquence utilisée (2.462 GHz) se situe dans la bande ISM 2.4 GHz, partagé
 
 ## Crédits
 
-<!-- À compléter : si le flowgraph est adapté d'un exemple ou d'un tutoriel existant, cite la source ici et précise ce que tu as modifié ou ajouté toi-même. -->
+Ce projet est adapté du dépôt open-source de **Suman Das** (M.Tech, IIT Bhubaneswar) :
 
-- Basé sur les blocs standard de GNU Radio (`gr-digital`, `gr-uhd`, `gr-pdu`).
+- Dépôt source : [sumandas-collab/Wireless-Video-Transmission](https://github.com/sumandas-collab/Wireless-Video-Transmission)
 
+### Ce qui provient du projet original
+
+- La structure générale de la chaîne TX/RX (File Source → CRC32 → BPSK différentiel → USRP Sink / USRP Source → RRC → Symbol Sync → Costas → CRC check → File Sink)
+- L'utilisation de la modulation BPSK différentielle avec filtre RRC
+- Le principe de vérification des paquets par CRC32
+
+### Ce que j'ai modifié ou ajouté
+
+- Changement de la fréquence porteuse : **905.2 MHz → 2.462 GHz** (bande ISM 2.4 GHz)
+- Augmentation de la taille des paquets : **64 octets → 1024 octets** (+ CRC32)
+- Ajout d'une structure de trame explicite (préambule / en-tête / payload / postambule)
+- Ajout du **protocole de framing** (`Protocol Formatter` + `Tagged Stream Mux`)
+- Réglage des paramètres de synchronisation (TED ML, bande de boucle 0.045, MMSE 8 taps)
+- Ajout des contrôles de gain TX/RX dans le flowgraph
+- Rédaction de la documentation (README, schémas, limites, réglementation)
+
+### Blocs standard utilisés
+
+- `gr-digital`, `gr-uhd`, `gr-pdu` (GNU Radio 3.10)
+  
 ## Licence
 
 Ce projet est distribué sous licence MIT. Voir le fichier [LICENSE](LICENSE).
