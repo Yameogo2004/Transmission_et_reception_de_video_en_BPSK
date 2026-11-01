@@ -139,6 +139,7 @@ Ce projet est adapté du dépôt open-source de **Suman Das** (M.Tech, IIT Bhuba
 - Réglage des paramètres de synchronisation (TED ML, bande de boucle 0.045, MMSE 8 taps)
 - Ajout des contrôles de gain TX/RX dans le flowgraph
 - Rédaction de la documentation (README, schémas, limites, réglementation)
+- La transmission d'un simultanément avec une seule SDR
 
 ### Blocs standard utilisés
 
